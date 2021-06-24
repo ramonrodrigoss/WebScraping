@@ -8,6 +8,10 @@ from selenium.webdriver.common.keys import Keys
 #chrome_options.headless = True
 #nav = webdriver.Chrome(options=chrome_options)
 
-driver = webdriver.Chrome()
 
-navegador= get.
+#Abrir Navegador
+navegador = webdriver.Chrome()
+#Abrir o site do Google
+navegador.get("https://www.google.com/")
+#Pesquisando "Cotacao do dolar" 
+navegador.find_element_by_xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input").send_keys("cotação dolar")
