@@ -1,5 +1,5 @@
 from selenium import webdriver
-import time
+import pandas as pd
 from selenium.webdriver.common.keys import Keys
 
 
@@ -35,3 +35,13 @@ cotacao_ouro = cotacao_ouro.replace(",", ".")
 print(cotacao_euro)
 print(cotacao_dolar)
 print(cotacao_ouro)
+
+
+#importando planilha para atualizar as cotacoes
+tabela = pd.read_excel("Produtos.xlsx")
+
+
+#alterar a cotacao do Dolar, Euro e Ouro da planinha que importamos
+tabela.loc[tabela["Moeda"] == "Dólar", "Cotação"] = float(cotacao_dolar)
+tabela.loc[tabela["Moeda"] == "Euro", "Cotação"] = float(cotacao_euro)
+tabela.loc[tabela["Moeda"] == "Ouro", "Cotação"] = float(cotacao_ouro)
