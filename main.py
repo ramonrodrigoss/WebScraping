@@ -57,3 +57,13 @@ tabela.loc[tabela["Moeda"] == "Dólar", "Cotação"] = float(cotacao_dolar)
 tabela.loc[tabela["Moeda"] == "Euro", "Cotação"] = float(cotacao_euro)
 tabela.loc[tabela["Moeda"] == "Ouro", "Cotação"] = float(cotacao_ouro)
 
+
+#re-calculando os precos das cotacoes com o valor gasto
+tabela["Preço Base Reais"] = tabela["Preço Base Original"] * tabela["Cotação"]
+tabela["Preço Final"] = tabela["Preço Base Reais"] * tabela["Margem"]
+
+#mostra tabela atualizada
+display(tabela)
+
+#salvar as alteracoes em uma nova tabela
+tabela.to_excel("Produtos Novo.xlsx", index=False)
